@@ -12,30 +12,25 @@
 ---
 
 ## 📌 Project Overview
-This repository contains the source code and documentation for the **Cash Withdrawal Subsystem** of an ATM Banking System.  
+This repository contains the implementation of the **Cash Withdrawal Subsystem** of an ATM Banking System with a strong focus on:
 
-The project focuses on:
-- Robust **Object-Oriented Design**
-- Comprehensive **Automated Testing**
+- Object-Oriented Design  
+- Black Box and White Box Testing  
+- Automated validation of system behavior  
 
 ---
 
 ## ⚙️ Core Functionalities
 
 ### 🔐 Card Authentication
-- PIN verification with a **maximum of 3 attempts**
-- Account is **blocked after 3 failed attempts**
+- PIN verification with a **3-attempt limit**
+- Account **blocked after 3 incorrect attempts**
 
 ### 💰 Withdrawal Validation
-Ensures that:
-- Amount is **positive**
-- Amount is a **multiple of 100**
-- Within **daily withdrawal limits**
-- Does **not exceed available balance**
-
-### 🧪 Automated Verification
-- Integrated **test runners**
-- Ensures all system requirements are verified programmatically
+- Amount must be **positive**
+- Must be a **multiple of 100**
+- Within **daily limit**
+- Must not exceed **available balance**
 
 ---
 
@@ -43,7 +38,8 @@ Ensures that:
 
 | File Name        | Description |
 |-----------------|------------|
-| `codecheck.cpp` | Integrated C++ source code with classes and automated test suite |
+| `blackbox.cpp`  | C++ implementation + Black Box test execution |
+| `whitebox.cpp`  | C++ implementation + White Box test execution |
 | `sheet1.csv`    | 15 Black Box test cases (ECP/BVA) |
 | `whitebox.csv`  | 15 White Box test cases (Path/Branch Coverage) |
 
@@ -53,65 +49,58 @@ Ensures that:
 
 The system follows the **Entity-Boundary-Control (EBC)** design pattern:
 
-- **Entity (Account)**  
-  Manages persistent data such as PIN, balance, and account status  
-
-- **Control (BankServer)**  
-  Handles business logic, transaction processing, and security checks  
-
-- **Boundary (ATMInterface)**  
-  Manages user interaction (CLI-based in this implementation)  
+- **Entity (Account)** → Stores PIN, balance, account status  
+- **Control (BankServer)** → Handles logic and validation  
+- **Boundary (ATMInterface)** → CLI-based interaction  
 
 ---
 
 ## 🧪 Testing Report (Q2 A.2)
 
 ### 1️⃣ Black Box Testing
-- **Techniques Used:**  
-  - Equivalence Class Partitioning (ECP)  
-  - Boundary Value Analysis (BVA)  
-
-- **Coverage:**  
-  - 15 test cases  
-  - Validates input types, PIN handling, and boundary conditions  
+- Techniques: **ECP, BVA**  
+- 15 test cases covering:
+  - Valid/invalid inputs  
+  - PIN attempts  
+  - Boundary values  
 
 ---
 
 ### 2️⃣ White Box Testing
-- **Techniques Used:**  
+- Techniques:
   - Statement Coverage  
   - Branch Coverage  
   - Path Coverage  
 
-- **Cyclomatic Complexity:**  
+- Cyclomatic Complexity:
 
 V(G) = 11
 
 
-- **Coverage Goal:**  
-- Achieved **100% Statement and Branch Coverage**  
-- All **11 independent paths** tested  
+- All **independent paths tested**
 
 ---
 
 ## 🚀 Execution Instructions
 
-### 🔧 Compile
+### 🔧 Compile & Run Black Box Tests
 ```bash
-g++ codecheck.cpp -o codecheck
-▶️ Run
-./codecheck
-📊 Automated Results Summary
+g++ blackbox.cpp -o blackbox
+./blackbox
+🔧 Compile & Run White Box Tests
+g++ whitebox.cpp -o whitebox
+./whitebox
+📊 Output Format
 
-After execution, the system displays:
+Each test case displays:
 
-ID: Test Case identifier (e.g., TC01, W05)
+Test Case ID
 Result: SUCCESS / FAILURE
-System Message: Output returned by the system
+System Message
 ✅ Final Checklist
- UML Use Case and Activity Diagrams (Paper-based)
- Sequence Diagram and ECB Analysis (Paper-based)
- C++ Implementation with Exception Handling
- 15 Black Box Test Cases documented
- 15 White Box Test Cases documented
- Automated CLI Verification
+ UML Diagrams (Use Case, Activity)
+ Sequence Diagram & ECB Analysis
+ C++ Implementation
+ 15 Black Box Test Cases
+ 15 White Box Test Cases
+ Automated Testing via CLI
