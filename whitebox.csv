@@ -1,0 +1,16 @@
+Test ID,Path / Branch Target,Input PIN,Input Amount,Expected Internal Path,White Box Criterion
+W01,Happy Path (All False),1234,500,1-2-3-4-5-6-7-8-9-10-11,Statement Coverage
+W02,isBlocked == true,1234,500,1 (True) -> Exit,Branch Coverage
+W03,isdigit failure,12A4,500,2 (True) -> Exit,Branch Coverage
+W04,length != 4 (Short),123,500,3 (True) -> Exit,Branch Coverage
+W05,length != 4 (Long),12345,500,3 (True) -> Exit,Branch Coverage
+W06,pin != enteredPin (Attempt 1),0000,200,4 (True) -> incrementAttempts -> Exit,Branch Coverage
+W07,pinAttempts >= 3,0000 (x3),200,4 (True) -> blockAccount -> Exit,Path Coverage
+W08,stod Exception,1234,Five,5 (Catch) -> Exit,Path Coverage
+W09,amount <= 0 (Zero),1234,0,6 (True) -> Exit,BVA (Internal)
+W10,amount <= 0 (Negative),1234,-1,6 (True) -> Exit,BVA (Internal)
+W11,amount < 100,1234,99,7 (True) -> Exit,Branch Coverage
+W12,amount > 20000,1234,20001,8 (True) -> Exit,Branch Coverage
+W13,amount % 100 != 0,1234,150,9 (True) -> Exit,Branch Coverage
+W14,amount > balance,1234,5100,10 (True) -> Exit,Branch Coverage
+W15,balance == 0,1234,5000,11 (True) -> Success,Path Coverage
